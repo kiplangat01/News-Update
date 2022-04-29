@@ -1,4 +1,6 @@
 {% import 'macros.html' as macro%}
+{% extends 'base.html'%}
+
 
 <!DOCTYPE html>
 <html>
@@ -12,21 +14,25 @@
     </head>
     <body>
  
-       <!-- Popular movie -->
-       <h3> Popular Movies</h3>
-       <ul>
-           {{ macro.displayMovieList(popular)}}
-       </ul>
-       <!-- Upcoming movie  -->
-       <h3> Upcoming Movies </h3>
-       <ul>
-           {{ macro.displayMovieList(upcoming)}}
-       </ul>
-       <!-- Now showing movie -->
-       <h3>Now Showing</h3>
-       <ul>
-           {{ macro.displayMovieList(now_showing)}}
-       </ul>
+        {% block content %}
+
+        <!-- Popular movie -->
+        <h3> Popular Movies</h3>
+        <ul>
+            {{ macro.displayMovieList(popular)}}
+        </ul>
+        <!-- Upcoming movie  -->
+        <h3> Upcoming Movies </h3>
+        <ul>
+            {{ macro.displayMovieList(upcoming)}}
+        </ul>
+        <!-- Now showing movie -->
+        <h3>Now Showing</h3>
+        <ul>
+            {{ macro.displayMovieList(now_showing)}}
+        </ul>
+
+        {% endblock%}
 
     </body>
 </html>
