@@ -1,6 +1,6 @@
 from flask import render_template
 from requests import request
-from app import app
+from app import views
 from .request import get_news
 
 # Views
