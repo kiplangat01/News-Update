@@ -11,7 +11,7 @@ def index():
     '''
 
     # Getting popular movie
-    popular_news = get_news('popular')
+    popular_news = get_news()
     print(popular_news)
     title = 'Home - Welcome to The best Movie Review Website Online'
     return render_template('index.html', title = title,popular = popular_news)

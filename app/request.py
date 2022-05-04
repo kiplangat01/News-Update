@@ -1,10 +1,11 @@
-from app import app
+from . import create_app
 import urllib.request,json
 from . import models
 
 News = models.News
 
 # Getting api key
+app = create_app('development')
 api_key = app.config['NEWS_API_KEY']
 
 # Getting the News base url
