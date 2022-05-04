@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best news Review website </title>
-        {% endif %}
-    </head>
-    <body>
-       <!-- Popular movie section  -->
+         {%extends 'base.html'%}
+
+
+        <title> 
+            {%block title%} {%endblock%}
+        </title>
+        {%block content%}
+        
+        <!-- Popular movie section  -->
        <h3> Popular News</h3>
        <ul>
           {% for popular_news in popular %}
-              <li>{{ popular_news.title}}</li>
+              <li class="list-unstyled p-4 border-bottom text-center">
+                  <p><strong>name:</strong> <span class="ms-2 text-primary">
+                    {{ popular_news.name}}
+                  </span></p>
+                   
+                  <p>
+                      <strong>description:</strong>
+                      <span>
+                        {{ popular_news.description}}
+                      </span>
+                  </p>
+                  <a target="blank" href="{{popular_news.url}}" class="d-block lot">visit</a>
+              </li>
+              
           {% endfor %}
       </ul>
-    </body>
-</html>
+        
+        {%endblock%}
+
+       
+

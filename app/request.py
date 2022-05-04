@@ -1,12 +1,16 @@
+from unicodedata import category, name
+
+from app.main.views import articles
 from . import create_app
 import urllib.request,json
-from . import models
+from .models import Source,Article
 
-News = models.News
+# News = models.News
 
 # Getting api key
 app = create_app('development')
 api_key = app.config['NEWS_API_KEY']
+articles_url = app.config['ARTICLES_URL']
 
 # Getting the News base url
 base_url = app.config["NEWS_API_BASE_URL"]
@@ -40,17 +44,64 @@ def process_results(news_list):
     Returns :
         movie_results: A list of news objects
     '''
+
+    '''
+    "id": "abc-news",
+"name": "ABC News",
+"description": "Your trusted source for breaking news, analysis, exclusive interviews, headlines, and videos at ABCNews.com.",
+"url": "https://abcnews.go.com",
+"category": "general",
+"language": "en",
+"country": "us"'''
+
+
     news_results = []
     for news_item in news_list:
         id = news_item.get('id')
-        title = news_item.get('original_title')
-        overview = news_item.get('overview')
-        poster = news_item.get('poster_path')
-        vote_average = news_item.get('vote_average')
-        vote_count = news_item.get('vote_count')
+        name = news_item.get('name')
+        description = news_item.get('description')
+        url = news_item.get('url')
+        category = news_item.get('category')
+        language = news_item.get('language')
+        country = news_item.get('country')
 
-        if poster:
-            news_object = News(id,title,overview,poster,vote_average,vote_count)
+        if language == 'en':
+            news_object = Source(id,name,description,language,country,category,url)
             news_results.append(news_object)
 
     return news_results
+
+def get_articles():
+    ariclesurl=articles_url.format(api_key)
+    with urllib.request.urlopen(ariclesurl) as url:
+        jdata=url.read()
+        data= json.loads(jdata)
+        articles_result= None
+        if data['articles']:
+            aricle_list=data['articles']
+            articles_result=proc(aricle_list)
+    return articles_result
+def proc(lista):
+    aricles_result=[]
+    for l in lista:
+        source=l.get('source')
+        title=l.get('title')
+        author=l.get('author')
+        des=l.get('description')
+        content=l.get('content')
+        url= l.get('url')
+        image=l.get('urlToImage')
+        publish=l.get('publishedAt')
+        if source:
+            article_object=Article(source,title,author,des,image,publish,content,url)
+            aricles_result.append(article_object)
+    return aricles_result
+    
+    
+
+
+
+
+
+
+
