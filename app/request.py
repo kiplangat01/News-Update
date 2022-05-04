@@ -1,5 +1,4 @@
-from unicodedata import category, name
-
+# from unicodedata import category, name
 from app.main.views import articles
 from . import create_app
 import urllib.request,json
@@ -45,16 +44,6 @@ def process_results(news_list):
         movie_results: A list of news objects
     '''
 
-    '''
-    "id": "abc-news",
-"name": "ABC News",
-"description": "Your trusted source for breaking news, analysis, exclusive interviews, headlines, and videos at ABCNews.com.",
-"url": "https://abcnews.go.com",
-"category": "general",
-"language": "en",
-"country": "us"'''
-
-
     news_results = []
     for news_item in news_list:
         id = news_item.get('id')
@@ -80,7 +69,11 @@ def get_articles():
         if data['articles']:
             aricle_list=data['articles']
             articles_result=proc(aricle_list)
+
+
     return articles_result
+
+
 def proc(lista):
     aricles_result=[]
     for l in lista:

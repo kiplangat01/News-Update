@@ -32,4 +32,3 @@ def articles():
     tittle = 'Hop headlines'
 
     return render_template('articles.html', articles = articles, tittle = tittle)
-
