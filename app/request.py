@@ -23,8 +23,8 @@ def get_news():
 
         news_results = None
 
-        if get_news_response['articles']:
-            news_results_list = get_news_response['results']
+        if get_news_response['sources']:
+            news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
 
 
