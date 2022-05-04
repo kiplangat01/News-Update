@@ -10,13 +10,13 @@ from .models import Source,Article
 # app = create_app('development')
 api_key=None
 articles_url=None
-base_url=None
+base_url= None
 
 def configure_request(app):
     global api_key,articles_url,base_url
-    api_key = app.config['NEWS_API_KEY']
-    articles_url = app.config['ARTICLES_URL']
-    base_url = app.config['NEWS_API_BASE_URL']
+    api_key = '8b74f92912264851821658c37a3faab6'
+    articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&sortBy=publishedAt&apiKey={}'
+    base_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey={}'
 
 def get_news():
     '''

@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template,request
 from . import main
 from ..request import get_news,get_articles
 from ..models import Source,Article
@@ -23,7 +23,7 @@ def News(id):
     '''
     View news page function that returns the movie details page and its data
     '''
-    news = get_articles()
+    news = get_articles(id)
     return render_template('news.html',id = id, news_list = news)
 
 # @main.route('/articles')
