@@ -1,5 +1,5 @@
 # from unicodedata import category, name
-from app.main.views import articles
+# from app.main.views import articles
 from . import create_app
 import urllib.request,json
 from .models import Source,Article
@@ -7,12 +7,16 @@ from .models import Source,Article
 # News = models.News
 
 # Getting api key
-app = create_app('development')
-api_key = app.config['NEWS_API_KEY']
-articles_url = app.config['ARTICLES_URL']
+# app = create_app('development')
+api_key=None
+articles_url=None
+base_url=None
 
-# Getting the News base url
-base_url = app.config["NEWS_API_BASE_URL"]
+def configure_request(app):
+    global api_key,articles_url,base_url
+    api_key = app.config['NEWS_API_KEY']
+    articles_url = app.config['ARTICLES_URL']
+    base_url = app.config['NEWS_API_BASE_URL']
 
 def get_news():
     '''
@@ -54,21 +58,21 @@ def process_results(news_list):
         language = news_item.get('language')
         country = news_item.get('country')
 
-        if language == 'en':
+        if id:
             news_object = Source(id,name,description,language,country,category,url)
             news_results.append(news_object)
 
     return news_results
 
-def get_articles():
-    ariclesurl=articles_url.format(api_key)
+def get_articles(id):
+    ariclesurl=articles_url.format(id,api_key)
     with urllib.request.urlopen(ariclesurl) as url:
         jdata=url.read()
         data= json.loads(jdata)
         articles_result= None
         if data['articles']:
-            aricle_list=data['articles']
-            articles_result=proc(aricle_list)
+            art_list=data['articles']
+            articles_result=proc(art_list)
 
 
     return articles_result
@@ -80,13 +84,13 @@ def proc(lista):
         source=l.get('source')
         title=l.get('title')
         author=l.get('author')
-        des=l.get('description')
+        descrpition=l.get('description')
         content=l.get('content')
         url= l.get('url')
-        image=l.get('urlToImage')
-        publish=l.get('publishedAt')
+        urlToImage=l.get('urlToImage')
+        publishedAt=l.get('publishedAt')
         if source:
-            article_object=Article(source,title,author,des,image,publish,content,url)
+            article_object=Article(source, title, author,descrpition, urlToImage,publishedAt,content,url)
             aricles_result.append(article_object)
     return aricles_result
     

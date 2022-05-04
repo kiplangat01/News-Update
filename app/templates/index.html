@@ -1,33 +1,20 @@
-         {%extends 'base.html'%}
+{%extends 'base.html'%}
 
+{%block content%}
+<div class="text-center">
+  <h1>News Sources</h1>
+  <br>
+    <div class="row container-fluid  d-flex  justify-content-center">
+     {% for source in source_list %}
+      <div class="card col-2 card-index">
+        <ul class="list-group list-group-flush">
+            <a href="/articles/{{source.id}}">
+              <p class="link">{{ source.name }}</p>
+            </a>
+        </ul>
+      </div>
+    {% endfor %}
+    </div>
+</div>
 
-        <title> 
-            {%block title%} {%endblock%}
-        </title>
-        {%block content%}
-        
-        <!-- Popular movie section  -->
-       <h3> Popular News</h3>
-       <ul>
-          {% for popular_news in popular %}
-              <li class="list-unstyled p-4 border-bottom text-center">
-                  <p><strong>name:</strong> <span class="ms-2 text-primary">
-                    {{ popular_news.name}}
-                  </span></p>
-                   
-                  <p>
-                      <strong>description:</strong>
-                      <span>
-                        {{ popular_news.description}}
-                      </span>
-                  </p>
-                  <a target="blank" href="{{popular_news.url}}" class="d-block lot">visit</a>
-              </li>
-              
-          {% endfor %}
-      </ul>
-        
-        {%endblock%}
-
-       
-
+{%endblock%}

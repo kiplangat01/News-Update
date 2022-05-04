@@ -1,1 +1,26 @@
-<h1> Hello news {{ id }} </h1>
+<body>
+  {%block content%}
+    <h1 class="text-capitalize text-center"> {{id}} </h3>
+      <div class="container-fluid text-center">
+        <div class="card-columns row d-flex justify-content-center">
+        {% for article in article_list %}
+          <div class="card col-4 card-article">
+            <h4 class="card-title">{{article.title}}</h4>
+            <img class="card" src="{{article.urlToImage}}" alt="News Image">
+            <div class="card-body">
+              <h5 class="card-title">{{article.author}}</h5>
+              <h6 class="card-text">{{article.description}}</h6>
+              <a href="{{article.url}}">
+                <p class="card-text link">Read...</p>
+              </a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Article date:{{article.publishedAt}}</small>
+              <br>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endblock %}
+  </body>  
