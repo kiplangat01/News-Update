@@ -7,7 +7,6 @@ body{
 #sources {
       margin: 30px;
       text-decoration: none;
-      
       padding-top: 3px;
       border-radius: 10px;
       background-image: linear-gradient(to right, rgb(58, 107, 146) , rgb(125, 190, 221)); 
@@ -35,10 +34,11 @@ nav{
 }
 
 #actual{
-      margin: 10px;
+      margin: 20px;
       border-radius: 20px;
-      background-color: rgb(5, 116, 147);
-
+      /* background-color: rgb(5, 116, 147); */
+      text-align: center;
+      width: 400px;
 }
 
 #actual a{
@@ -50,5 +50,9 @@ nav{
 
 #actual #read{
       background-color: brown;
-      color: white;
+      align-items: center;
+      border-radius: 5px;
+      padding: 3px;
+      color: rgb(213, 201, 201);
 }
+
