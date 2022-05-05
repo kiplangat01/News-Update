@@ -34,9 +34,9 @@ nav{
 }
 
 #actual{
-      margin: 20px;
+      margin: 30px;
       border-radius: 20px;
-      /* background-color: rgb(5, 116, 147); */
+      background-color: rgb(99, 194, 220);
       text-align: center;
       width: 400px;
 }
