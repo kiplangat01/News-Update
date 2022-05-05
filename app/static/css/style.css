@@ -4,20 +4,26 @@ body{
       margin: 0;
 }
 
-.card-index {
+#sources {
       margin: 30px;
       text-decoration: none;
-      border: 1px solid black;
+      
       padding-top: 3px;
       border-radius: 10px;
-      background-image: linear-gradient(to right, rgb(98, 167, 223) , rgb(201, 80, 212)); 
+      background-image: linear-gradient(to right, rgb(58, 107, 146) , rgb(125, 190, 221)); 
+      color: white;
 }
 
-.text-center{
+.newss{
       color: brown;
 }
 
-.card-index a{
+#sources a{
       text-decoration: none;
       padding-top: 10px;
+      color: white;
+}
+
+nav{
+      background-color: rgb(170, 168, 168);
 }

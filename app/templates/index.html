@@ -4,11 +4,11 @@
 
 {%block content%}
 <div class="text-center">
-  <h1>News Sources</h1>
+  <h1 class="newss">News Sources</h1>
   <br>
     <div class="row container-fluid  d-flex  justify-content-center">
      {% for source in source_list %}
-      <div class="card col-2 card-index">
+      <div id="sources" class="card col-2 card-index">
         <ul class="list-group list-group-flush">
             <a href="/news/{{source.id}}">
               <p class="link">{{ source.name }}</p>
